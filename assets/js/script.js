@@ -22,7 +22,7 @@ function createTimeBlock(hour) {
 
   let formEl = $('<form>').addClass('row time-block').data('hour', hour);
   let labelEl = $('<label>').addClass('col-1 py-3 my-0 hour').text(hourText).attr('for', idText);
-  let textAreaEl = $('<textarea>').addClass('col-10').attr('id', idText);
+  let textAreaEl = $('<textarea>').addClass('col-10 past').attr('id', idText);
   let saveBtnEl = $('<button>').addClass('col-1 saveBtn').attr('type', 'submit');
   let saveIconEl = $('<i>').addClass('far fa-save');
 
@@ -36,7 +36,25 @@ function createTimeBlock(hour) {
 
 
 // color code each time block
-function 
+function setAllTextAreasBackgroundColor() {
+  let thisHour = moment().format('H');
+  $('textarea').each((index, el) => setTextAreaBackgroundColor(el, 13));
+};
+
+// set background color according to the current hour
+function setTextAreaBackgroundColor(textarea, thisHour) {
+  let el = $(textarea);
+  let textareaHour = el.parent('form').data('hour');
+  
+  el.removeClass();
+  if ( textareaHour < thisHour) {
+    el.addClass('col-10 past');
+  } else if (textareaHour == thisHour) {
+    el.addClass('col-10 present');
+  } else {
+    el.addClass('col-10 future');
+  };
+}
 
 
 
@@ -83,11 +101,13 @@ function printTask(hour) {
 }
 
 
+
 function init() {
   currentDayEl.text(today.format('dddd, Do MMMM YYYY'));
   loadTasks();
   renderTimeBlocks();
   printTasks();
+  setAllTextAreasBackgroundColor();
 };
 
 init();
