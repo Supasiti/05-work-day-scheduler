@@ -38,7 +38,7 @@ function createTimeBlock(hour) {
 // color code each time block
 function setAllTextAreasBackgroundColor() {
   let thisHour = moment().format('H');
-  $('textarea').each((index, el) => setTextAreaBackgroundColor(el, 13));
+  $('textarea').each((index, el) => setTextAreaBackgroundColor(el, thisHour));
 };
 
 // set background color according to the current hour
@@ -55,8 +55,6 @@ function setTextAreaBackgroundColor(textarea, thisHour) {
     el.addClass('col-10 future');
   };
 }
-
-
 
 // handle when save button is clicked
 function handleSaveTask(event) {
@@ -100,8 +98,7 @@ function printTask(hour) {
   $(taskId).val(tasks[hour]);
 }
 
-
-
+// on loading the page
 function init() {
   currentDayEl.text(today.format('dddd, Do MMMM YYYY'));
   loadTasks();
