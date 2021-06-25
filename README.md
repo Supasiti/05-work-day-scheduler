@@ -47,5 +47,6 @@ The final webpage can be accessed through the following [link](https://supasiti.
 - the code is separated into
   - rendering of the page; and 
   - handling user data.
-- It is possible to combine the rendering of the background colour of each time block into one function (`setAllTextAreasBackgroundColor` and `createTimeBlock`), but by separating them out, it would be easier if one choose to update the background colour as hours change.
+- It is possible to combine the rendering of the background colour of each time block (`setAllTextAreasBackgroundColor`) with `createTimeBlock` function, but by separating them out, it would be easier later if one choose to update the background colour as hours change.
+- The page will not update if the present hour changes, but this functionality can be added in.
 - I think that `printTasks` function is computationally inexpensive enough to be separate from `createTimeBlock` function. If this is an issue, it is not too hard to insert it back in.
