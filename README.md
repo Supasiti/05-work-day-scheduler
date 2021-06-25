@@ -38,4 +38,14 @@ The final webpage can be accessed through the following [link](https://supasiti.
 
 ### Third party libraries
 - In this module, 
-  - I extensively use Bootstrap for styling and layout. 
+  - Bootstrap was used extensively for styling and layout;
+  - jQuery was used to interact with web API; and
+  - moment.js was used to manage time object consistently.
+- I tried to minimise using Bootstrap as much as possible to give a unique feel. 
+
+### Coding style
+- the code is separated into
+  - rendering of the page; and 
+  - handling user data.
+- It is possible to combine the rendering of the background colour of each time block into one function (`setAllTextAreasBackgroundColor` and `createTimeBlock`), but by separating them out, it would be easier if one choose to update the background colour as hours change.
+- I think that `printTasks` function is computationally inexpensive enough to be separate from `createTimeBlock` function. If this is an issue, it is not too hard to insert it back in.

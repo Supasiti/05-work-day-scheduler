@@ -6,7 +6,7 @@ let currentTime = moment();
 let workHours = [9,10,11,12,13,14,15,16,17,18];
 let tasks = {};
 
-// rendering all timeblock
+// rendering all timeblocks
 function renderTimeBlocks() {
   for (let hour of workHours){
     let timeBlock = createTimeBlock(hour);
